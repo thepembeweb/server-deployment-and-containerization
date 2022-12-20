@@ -86,7 +86,7 @@ Completing the project involved the following steps:
 3. Creating an EKS cluster
 4. Storing a secret using AWS Parameter Store
 5. Creating a CodePipeline pipeline triggered by GitHub checkins
-6. Creating a CodeBuild stage which will build, test, and deploy your code
+6. Creating a CodeBuild stage which will build, test, and deploy the code
 
 
 ## Built With
