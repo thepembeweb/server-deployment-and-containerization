@@ -1,4 +1,4 @@
-# Deploying a Flask API to EKS
+# Deploying a Flask API to Amazon EKS
 
 > This project demonstrates how to containerize and deploy a Flask API to a Kubernetes cluster using Docker, AWS EKS, CodePipeline, and CodeBuild.
 
