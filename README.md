@@ -1,17 +1,21 @@
-# Deploying a Flask API
+# Deploying a Flask API to EKS
 
-This is the project starter repo for the course Server Deployment, Containerization, and Testing.
+> This project demonstrates how to containerize and deploy a Flask API to a Kubernetes cluster using Docker, AWS EKS, CodePipeline, and CodeBuild.
 
-In this project you will containerize and deploy a Flask API to a Kubernetes cluster using Docker, AWS EKS, CodePipeline, and CodeBuild.
+![](https://upload.wikimedia.org/wikipedia/commons/f/f8/Python_logo_and_wordmark.svg)
+![](amazon-eks-logo.png)
+
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+
+## Overview
 
 The Flask app that will be used for this project consists of a simple API with three endpoints:
 
-- `GET '/'`: This is a simple health check, which returns the response 'Healthy'. 
-- `POST '/auth'`: This takes a email and password as json arguments and returns a JWT based on a custom secret.
-- `GET '/contents'`: This requires a valid JWT, and returns the un-encrpyted contents of that token. 
+* `GET '/'`: This is a simple health check, which returns the response 'Healthy'. 
+* `POST '/auth'`: This takes a email and password as json arguments and returns a JWT based on a custom secret.
+* `GET '/contents'`: This requires a valid JWT, and returns the un-encrpyted contents of that token. 
 
 The app relies on a secret set as the environment variable `JWT_SECRET` to produce a JWT. The built-in Flask server is adequate for local development, but not production, so you will be using the production-ready [Gunicorn](https://gunicorn.org/) server when deploying the app.
-
 
 
 ## Prerequisites
@@ -51,38 +55,55 @@ python -m pip install --upgrade pip==20.2.3
 
 ## Initial setup
 
-1. Fork the <a href="https://github.com/udacity/cd0157-Server-Deployment-and-Containerization" target="_blank">Server and Deployment Containerization Github repo</a> to your Github account.
-1. Locally clone your forked version to begin working on the project.
+1. **Clone the source locally:
 ```bash
-git clone https://github.com/SudKul/cd0157-Server-Deployment-and-Containerization.git
-cd cd0157-Server-Deployment-and-Containerization/
+git clone https://github.com/thepembeweb/server-deployment-and-containerization.git
+cd server-deployment-and-containerization/
 ```
 1. These are the files relevant for the current project:
 ```bash
 .
 ├── Dockerfile 
 ├── README.md
-├── aws-auth-patch.yml #ToDo
-├── buildspec.yml      #ToDo
-├── ci-cd-codepipeline.cfn.yml #ToDo
-├── iam-role-policy.json  #ToDo
+├── aws-auth-patch.yml
+├── buildspec.yml
+├── ci-cd-codepipeline.cfn.yml
+├── iam-role-policy.json
 ├── main.py
 ├── requirements.txt
 ├── simple_jwt_api.yml
-├── test_main.py  #ToDo
-└── trust.json     #ToDo 
+├── test_main.py
+└── trust.json
 ```
 
      
 ## Project Steps
 
-Completing the project involves several steps:
+Completing the project involved the following steps:
 
-1. Write a Dockerfile for a simple Flask API
-2. Build and test the container locally
-3. Create an EKS cluster
-4. Store a secret using AWS Parameter Store
-5. Create a CodePipeline pipeline triggered by GitHub checkins
-6. Create a CodeBuild stage which will build, test, and deploy your code
+1. Writing a Dockerfile for a simple Flask API
+2. Building and test the container locally
+3. Creating an EKS cluster
+4. Storing a secret using AWS Parameter Store
+5. Creating a CodePipeline pipeline triggered by GitHub checkins
+6. Creating a CodeBuild stage which will build, test, and deploy your code
 
-For more detail about each of these steps, see the project lesson.
+
+## Built With
+
+* [Python 3](https://www.python.org/) - The programming language used
+* [Flask](https://palletsprojects.com/p/flask/) - The web framework used
+* [Amazon EKS](https://aws.amazon.com/eks/) - The managed Kubernetes service used to run Kubernetes in the AWS cloud
+
+
+## Authors
+
+* **[Pemberai Sweto](https://github.com/thepembeweb)** - *Initial work* - [Server Deployment and Containerization](https://github.com/thepembeweb/server-deployment-and-containerization)
+
+## License
+
+[![License](http://img.shields.io/:license-mit-green.svg?style=flat-square)](http://badges.mit-license.org)
+
+- This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+- Copyright 2022 © [Pemberai Sweto](https://github.com/thepembeweb).
+
